@@ -60,19 +60,31 @@ const showPerson = (person) => {
 // show next person
 
 nextBtn.addEventListener("click", () => {
-    currentItem++;
-    if(currentItem > reviews.length - 1){
-        currentItem = 0;
-    }
-    showPerson(currentItem);
-})
+  currentItem++;
+  if (currentItem > reviews.length - 1) {
+    currentItem = 0;
+  }
+  showPerson(currentItem);
+});
 
 // show prev person
 
 prevBtn.addEventListener("click", () => {
-    currentItem--;
-    if(currentItem < 0){
-        currentItem = reviews.length - 1;
-    }
-    showPerson(currentItem);
-})
+  currentItem--;
+  if (currentItem < 0) {
+    currentItem = reviews.length - 1;
+  }
+  showPerson(currentItem);
+});
+
+// show random person
+
+randomBtn.addEventListener("click", () => {
+  let randomNumber
+  do {
+    randomNumber = Math.floor(Math.random() * reviews.length);
+  } while (randomNumber === currentItem);
+  
+  currentItem = randomNumber;
+  showPerson(currentItem);
+});
